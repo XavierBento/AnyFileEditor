@@ -29,9 +29,6 @@ It is designed for writers, students, and developers who need a **fast, tabbed, 
 - 🖼️ **Embedded icons**  
   Toolbar icons embedded via `pack://application` URIs (no missing resource issues).
 
-- 📑 **Split View mode**  
-  Edit two files side-by-side in perfectly aligned editors.
-
 - 🖨️ **Printing support**  
   Print documents with A4 preset formatting.
 
