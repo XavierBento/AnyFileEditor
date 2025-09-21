@@ -39,7 +39,10 @@ It is designed for writers, students, and developers who need a **fast, tabbed, 
 
 ## 📸 Screenshots
 
-> *(Add screenshots of the UI here – Dark/Light mode, tabbed view, split view, etc.)*
+<img width="1470" height="893" alt="First Page" src="https://github.com/user-attachments/assets/66e9664d-6578-49a5-b92d-1f1674de9370" />
+<img width="1475" height="895" alt="Layout" src="https://github.com/user-attachments/assets/60b20fe8-5b67-4336-979c-25fefc1c010e" />
+<img width="1467" height="892" alt="Design" src="https://github.com/user-attachments/assets/c443a46e-6031-4863-af71-70325df7e468" />
+
 
 ---
 
