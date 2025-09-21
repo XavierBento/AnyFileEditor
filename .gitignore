@@ -1,0 +1,34 @@
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.opendb
+*.sln.docstates
+
+# NuGet
+packages/
+*.nupkg
+
+# Rider / ReSharper
+.idea/
+.ReSharper*/
+*_Resharper.*
+
+# Misc / OS
+*.cache
+*.db
+*.tmp
+*.swp
+[Tt]humbs.db
+[Dd]esktop.ini
+
+# Publish
+publish/
+*.Publish.xml

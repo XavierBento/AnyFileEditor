@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ============================================================================
+  Project   : AnyFile Editor (TxtOrganizer)
+  File      : App.xaml
+  Author    : Xavier Bento
+  Version   : v1.0
+  Created   : 2025-09-21
+  Description: Application resources and startup configuration for the WPF shell.
+  ============================================================================
+-->
+<!-- File: AnyFileEditor_fixed_all/App.xaml
+     Purpose: WPF XAML markup for views/resources/styles/templates.
+     Context: MahApps.Metro/ControlzEx resources, Theme-aware brushes and templates
+     Notes: Merged dictionary order is significant for resource override precedence.
+-->
+<Application x:Class="TxtOrganizer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+              <ResourceDictionary Source="Themes/Theme.Light.xaml" />
+        <ResourceDictionary Source="Themes/Theme.Dark.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    
+      <!-- Style used by the tab close '×' button -->
+      <Style x:Key="CloseGlyphButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Foreground" Value="{DynamicResource TabCloseGlyphBrush}"/>
+        <Style.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Foreground" Value="{DynamicResource TabCloseGlyphBrush.Hover}"/>
+          </Trigger>
+          <Trigger Property="IsPressed" Value="True">
+            <Setter Property="Foreground" Value="{DynamicResource TabCloseGlyphBrush.Pressed}"/>
+          </Trigger>
+          <Trigger Property="IsEnabled" Value="False">
+            <Setter Property="Foreground" Value="{DynamicResource TabCloseGlyphBrush.Disabled}"/>
+          </Trigger>
+          <!-- High Contrast: use system brush -->
+          <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="True">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+</ResourceDictionary>
+  </Application.Resources>
+</Application>

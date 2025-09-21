@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ============================================================================
+  Project   : AnyFile Editor (TxtOrganizer)
+  File      : Themes/Theme.Light.xaml
+  Author    : Xavier Bento
+  Version   : v1.0
+  Created   : 2025-09-21
+  Description: Light theme resource dictionary and brushes.
+  ============================================================================
+-->
+<!-- File: AnyFileEditor_fixed_all/Themes/Theme.Light.xaml
+     Purpose: WPF XAML markup for views/resources/styles/templates.
+     Context: MahApps.Metro/ControlzEx resources, Theme-aware brushes and templates
+     Notes: Merged dictionary order is significant for resource override precedence.
+-->
+<!-- AnyFileEditor_fixed_all/Themes/Theme.Light.xaml -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <SolidColorBrush x:Key="TabCloseGlyphBrush" Color="#FFFFFFFF"/>
+  <SolidColorBrush x:Key="TabCloseGlyphBrush.Hover" Color="#F5F5F5"/>
+  <SolidColorBrush x:Key="TabCloseGlyphBrush.Pressed" Color="#E6E6E6"/>
+  <SolidColorBrush x:Key="TabCloseGlyphBrush.Disabled" Color="#FFFFFF" Opacity="0.6"/>
+</ResourceDictionary>

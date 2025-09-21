@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ============================================================================
+  Project   : AnyFile Editor (TxtOrganizer)
+  File      : Services/InsertTableDialog.xaml
+  Author    : Xavier Bento
+  Version   : v1.0
+  Created   : 2025-09-21
+  Description: Dialog view for inserting a table into the document.
+  ============================================================================
+-->
+<!-- File: AnyFileEditor_fixed_all/InsertTableDialog.xaml
+     Purpose: WPF XAML markup for views/resources/styles/templates.
+     Context: MahApps.Metro/ControlzEx resources, Theme-aware brushes and templates
+     Notes: Merged dictionary order is significant for resource override precedence.
+-->
+<mah:MetroWindow x:Class="TxtOrganizer.InsertTableDialog"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 Title="Insert Table"
+                 SizeToContent="WidthAndHeight"
+                 WindowStartupLocation="CenterOwner"
+                 ResizeMode="NoResize"
+                 ShowInTaskbar="False">
+  <StackPanel Margin="16" Width="260">
+    <TextBlock Text="Rows:" Margin="0,0,0,4"/>
+    <mah:NumericUpDown x:Name="RowsUpDown" Minimum="1" Maximum="50" Value="2" />
+
+    <TextBlock Text="Columns:" Margin="0,12,0,4"/>
+    <mah:NumericUpDown x:Name="ColsUpDown" Minimum="1" Maximum="20" Value="2" />
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+      <Button Width="90" Margin="0,0,8,0" Content="OK" IsDefault="True" Click="Ok_Click"/>
+      <Button Width="90" Content="Cancel" IsCancel="True"/>
+    </StackPanel>
+  </StackPanel>
+</mah:MetroWindow>

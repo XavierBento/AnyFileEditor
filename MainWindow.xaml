@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ============================================================================
+  Project   : AnyFile Editor (TxtOrganizer)
+  File      : MainWindow.xaml
+  Author    : Xavier Bento
+  Version   : v1.0
+  Created   : 2025-09-21
+  Description: Main application window markup (MetroWindow) with tabbed editor.
+  ============================================================================
+-->
+<!-- File: AnyFileEditor_fixed_all/MainWindow.xaml
+     Purpose: WPF XAML markup for views/resources/styles/templates.
+     Context: MahApps.Metro/ControlzEx resources, Theme-aware brushes and templates
+     Notes: Merged dictionary order is significant for resource override precedence.
+-->
+<mah:MetroWindow x:Class="TxtOrganizer.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 Title="AnyFile Editor"
+                 Height="720" Width="1180"
+                 WindowStartupLocation="CenterScreen"
+                 Icon="pack://application:,,,/Assets/TxtOrganizer-icon.ico">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <TabControl Grid.Row="0" x:Name="FeatureTabs" Margin="0,0,0,4">
+
+      <!-- ======================= FILE TAB ======================= -->
+      <TabItem Header="File">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <ToolBar Grid.Column="0">
+            <Button Click="ChooseRoot_Click" ToolTip="Choose working folder" AutomationProperties.Name="Choose working folder">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8B7;"/>
+            </Button>
+
+            <TextBlock x:Name="RootFolderNameText" Margin="6,0,8,0" VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis" MaxWidth="200" ToolTip="Current working folder"/>
+
+            <ComboBox x:Name="FilesCombo" Margin="6,0,0,0" Width="260" IsEditable="False"
+                      DisplayMemberPath="Name" SelectionChanged="FilesCombo_SelectionChanged"
+                      ToolTip="Files in the working folder (.rtf, .txt, .docx)"/>
+
+            <Button Click="OpenFile_Click" ToolTip="Open selected file" AutomationProperties.Name="Open file">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E5;"/>
+            </Button>
+
+            <!-- Save As… (multi-format) -->
+            <Button Click="SaveRtf_Click"
+                    ToolTip="Save as… (.rtf, .txt, .docx, .odt)"
+                    AutomationProperties.Name="Save as">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE105;"/>
+            </Button>
+
+            <Button Click="ExportTxt_Click" ToolTip="Export as .txt" AutomationProperties.Name="Export as TXT">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8A5;"/>
+            </Button>
+
+            <Button Click="ExportDocx_Click" ToolTip="Export as Microsoft Word (.docx)" AutomationProperties.Name="Export as DOCX">
+              <Image Width="16" Height="16" Source="pack://application:,,,/Assets/icon-docx.png"/>
+            </Button>
+
+            <Button Click="ExportPdf_Click" ToolTip="Export as PDF" AutomationProperties.Name="Export as PDF">
+              <Image Width="16" Height="16" Source="pack://application:,,,/Assets/icon-pdf.png"/>
+            </Button>
+          </ToolBar>
+
+          <ToolBar Grid.Column="1" HorizontalAlignment="Right">
+            <Button Click="ThemeToggle_Click" ToolTip="Toggle dark/light theme" AutomationProperties.Name="Toggle theme">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE708;"/>
+            </Button>
+          </ToolBar>
+        </Grid>
+      </TabItem>
+
+      <!-- ======================= LAYOUT TAB ======================= -->
+      <TabItem Header="Layout">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <ToolBar Grid.Column="0">
+            <Button Click="InsertTable_Click" ToolTip="Insert table" AutomationProperties.Name="Insert table">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8EC;"/>
+            </Button>
+
+            
+
+            
+
+            <Button Click="Print_Click" ToolTip="Print A4" AutomationProperties.Name="Print A4">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE749;"/>
+            </Button>
+
+            <Separator/>
+
+            <!-- Font family + size (unchanged) -->
+            <ComboBox x:Name="FontFamilyCombo" Width="240" DisplayMemberPath="Name"
+                      SelectionChanged="FontFamilyCombo_SelectionChanged"
+                      ToolTip="Font family (system fonts + Add font…)"/>
+            <ComboBox x:Name="FontSizeCombo" Width="70" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="False"
+                      SelectionChanged="FontSizeCombo_SelectionChanged"
+                      LostKeyboardFocus="FontSizeCombo_LostKeyboardFocus"
+                      ToolTip="Font size (type a number or pick)"/>
+
+            <Separator/>
+
+            <!-- Alignment -->
+            <Button Click="AlignLeft_Click" ToolTip="Align left">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E4;"/>
+            </Button>
+            <Button Click="AlignCenter_Click" ToolTip="Align center">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E3;"/>
+            </Button>
+            <Button Click="AlignRight_Click" ToolTip="Align right">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E2;"/>
+            </Button>
+
+            <Separator/>
+
+            <!-- Line spacing -->
+            <ComboBox x:Name="LineSpacingCombo" Width="70" SelectionChanged="LineSpacingCombo_SelectionChanged" ToolTip="Line spacing">
+              <ComboBoxItem Content="1.0"/>
+              <ComboBoxItem Content="1.15"/>
+              <ComboBoxItem Content="1.5"/>
+              <ComboBoxItem Content="2.0"/>
+            </ComboBox>
+
+            <Separator/>
+            <Button Content="B" FontWeight="Bold"  ToolTip="Bold"      Click="Bold_Click"/>
+            <Button Content="/" FontStyle="Italic" ToolTip="Italic"    Click="Italic_Click"/>
+            <Button Content="U"                    ToolTip="Underline" Click="Underline_Click"/>
+            <Button Content="•"                    ToolTip="Bullets"   Click="Bullets_Click"/>
+            <Button Content="1."                   ToolTip="Numbering" Click="Numbering_Click"/>
+
+            <Separator/>
+
+            <!-- Color palette -->
+            <Button x:Name="ColorPaletteBtn" Click="OpenPalette_Click" ToolTip="Text color" AutomationProperties.Name="Text color">
+              <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE790;"/>
+              <Button.ContextMenu>
+                <ContextMenu>
+                  <StackPanel Orientation="Horizontal" Margin="6">
+                    <Button Width="18" Height="18" Margin="2" Background="#FF000000" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FFFFFFFF" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FF2196F3" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FFF44336" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FF4CAF50" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FFFFC107" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FF9C27B0" Click="PaletteSwatch_Click"/>
+                    <Button Width="18" Height="18" Margin="2" Background="#FF607D8B" Click="PaletteSwatch_Click"/>
+                  </StackPanel>
+                  <Separator/>
+                  <MenuItem Header="More colors…" Click="ColorPicker_Click"/>
+                </ContextMenu>
+              </Button.ContextMenu>
+            </Button>
+
+            
+          </ToolBar>
+        </Grid>
+      </TabItem>
+    </TabControl>
+
+    <!-- Editor / DOCX preview -->
+    <Grid Grid.Row="1" Margin="6,0,6,6">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Current file:" Margin="0,0,6,0"/>
+        <TextBlock x:Name="CurrentFileLabel" Text="(unsaved)" FontWeight="Bold"/>
+      </StackPanel>
+
+      <RichTextBox x:Name="Editor"
+                   Grid.Row="1"
+                   VerticalScrollBarVisibility="Auto"
+                   AcceptsTab="True">
+        <FlowDocument/>
+      </RichTextBox>
+
+      <WebBrowser x:Name="DocxWeb"
+                  Grid.Row="1"
+                  Visibility="Collapsed"/>
+    </Grid>
+
+    <StatusBar Grid.Row="2">
+      <StatusBarItem>
+        <TextBlock x:Name="StatusText" Text="Ready."/>
+      </StatusBarItem>
+    </StatusBar>
+  </Grid>
+</mah:MetroWindow>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ============================================================================
+  Project   : AnyFile Editor (TxtOrganizer)
+  File      : TxtOrganizer.csproj
+  Author    : Xavier Bento
+  Version   : v1.0
+  Created   : 2025-09-21
+  Description: Application project file for the WPF editor.
+  ============================================================================
+-->
+<!--
+  File: AnyFileEditor_fixed_all/TxtOrganizer.csproj
+  Purpose: MSBuild project configuration for WPF .NET 8.0-windows app.
+  Context: Package references, Resource embedding for pack URIs
+  Notes: Suppress NU1701 only where needed; preserve resource Include paths verbatim.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Assets\TxtOrganizer-icon.ico</ApplicationIcon>
+    <!-- Hide NU1701 compatibility warnings for OpenXmlPowerTools dependencies -->
+    <NoWarn>$(NoWarn);NU1701</NoWarn>
+  </PropertyGroup>
+<!-- Description: Updated header fields -->
+
+  <ItemGroup>
+    <!-- NOTE: External dependency; keep version pinned to avoid API drift. -->
+<PackageReference Include="MahApps.Metro" Version="2.4.10" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="OpenXmlPowerTools" Version="4.5.3.2" />
+  </ItemGroup>
+
+  <!-- Embed icon so pack URI resolves -->
+  <ItemGroup>
+    <!-- NOTE: Embed icon/resource so pack URIs resolve at runtime. -->
+<Resource Include="Assets\TxtOrganizer-icon.ico" />
+    <Resource Include="Assets\icon-docx.png" />
+    <Resource Include="Assets\icon-pdf.png" />
+  </ItemGroup>
+</Project>
